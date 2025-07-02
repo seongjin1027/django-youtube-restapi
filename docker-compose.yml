@@ -11,3 +11,19 @@ services:
     volumes:
       - ./app:/app
     command: sh -c "python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=youtube
+      - DB_USER=yongsaem
+      - DB_PASS=password123
+    depends_on:
+      - db
+
+  db: # PostgreSQL Database
+    image: postgresql:17-alpine
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=youtube
+      - POSTGRES_USER=yongsaem
+      - POSTGRES_PASSWORD=password123
