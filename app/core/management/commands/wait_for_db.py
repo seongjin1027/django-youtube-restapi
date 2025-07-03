@@ -8,7 +8,7 @@ from django.core.management.base import BaseCommand
 from django.db import connections # db랑 연결을 시도
 
 from django.db.utils import OperationalError
-from psycopg2 import OperationalError
+from psycopg2 import OperationalError as Psycopg2OperationalError
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
