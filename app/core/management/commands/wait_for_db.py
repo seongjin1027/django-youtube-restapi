@@ -24,4 +24,5 @@ class Command(BaseCommand):
                 self.stdout.write("Retry DB Connection ...")
                 time.sleep(1)
 
-        self.stdout.write(self.style.SUCCESS('success to PostgreSQL connection'))
+        success_msg = self.style.SUCCESS('success to PostgreSQL connection')
+        self.stdout.write(success_msg)
