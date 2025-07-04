@@ -1,9 +1,7 @@
 import os
 
 from pathlib import Path
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 SECRET_KEY = (
     'django-insecure-#w1t)xpwl3jc=&u=zsh_-=5gcq@nx800y0-3&np8df*3l*n99)'
 )
@@ -22,10 +20,23 @@ DJANGO_SYSTEM_APPS = [
 ]
 
 CUSTOM_USER_APPS = [
-    'users.apps.UsersConfig'
+    'users.apps.UsersConfig',
+    'comments.apps.CommentsConfig',
+    'reactions.apps.ReactionsConfig',
+    'subscriptions.apps.SubscriptionsConfig',
+    'videos.apps.VideosConfig',
+    'rest_framework',
+    'drf_spectacular'
 ]
 
+# docker-compose run --rm app sh -c 'python manage.py makemigrations'
+# docker-compose run --rm app sh -c 'python manage.py migrate'
+
 INSTALLED_APPS = DJANGO_SYSTEM_APPS + CUSTOM_USER_APPS
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
